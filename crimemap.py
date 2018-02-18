@@ -20,6 +20,16 @@ def home():
         data = None
     return render_template("home.html", data=data)
 
+@app.route("/submitcrime", methods=['POST'])
+def submitcrime():
+    category = request.form.get("category")
+    date = request.form.get("date")
+    latitude = request.form.get("latitude")
+    longtitude = request.form.get("longtitude")
+    description = request.form.get("description")
+    DB.add_crime(category, date, latitude, longtitude, description)
+    return home()
+
 @app.route("/add", methods=["POST"])
 def add():
     try:
