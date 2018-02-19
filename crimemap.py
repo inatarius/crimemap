@@ -29,7 +29,7 @@ def submitcrime():
     if category not in categories:
         return home()
     date = format_date(request.form.get("date"))
-    if note date:
+    if not date:
         return home("Invalide date. Please use yyyy-mm-dd format")
     try:
         latitude = float(request.form.get("latitude"))
